@@ -23,7 +23,7 @@ public class Main {
 		//construct passive objects and microservices
 		Input input = new Input();
 		try {
-			readInit("input.json", input);
+			readInit(args[0], input);
 		}
 		catch (IOException e) { }
 		Ewoks ewoks= Ewoks.getInstance(input.getEwoks());
@@ -55,7 +55,7 @@ public class Main {
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		Diary finalD = Diary.getInstance();
 			try {
-				FileWriter fileWriter = new FileWriter("output.json");
+				FileWriter fileWriter = new FileWriter(args[1]);
 				gson.toJson(finalD, fileWriter);
 				fileWriter.flush();
 				fileWriter.close();
